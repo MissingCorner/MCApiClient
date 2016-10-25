@@ -1,8 +1,8 @@
 import { Resource, method } from '../../index'
 
 class GithubUser extends Resource {
-  constructor(bitclub, urlData) {
-    super(bitclub, urlData)
+  constructor(client, urlData) {
+    super(client, urlData)
     this.path = 'users'
   }
 
