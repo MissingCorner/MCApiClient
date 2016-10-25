@@ -1,4 +1,4 @@
-import { Resource, method } from '../index'
+import { Resource, method } from '../../index'
 
 class GithubUser extends Resource {
   constructor(bitclub, urlData) {
