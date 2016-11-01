@@ -2,11 +2,11 @@
   "name": "mcapiclient",
   "version": "1.0.0",
   "description": "\"Quick n Dirty Api Client for Restful API\"",
-  "main": "dist/index.js",
+  "main": "dist/MCApiClient.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "babel-node ./examples/Typicode/index.js",
-    "build": "babel lib --presets babel-preset-es2015,babel-preset-stage-0 --out-dir dist",
+    "build": "babel src --presets babel-preset-es2015,babel-preset-stage-0 --out-dir dist",
     "release": "npm run build && npm publish"
   },
   "repository": {
