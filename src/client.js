@@ -1,7 +1,8 @@
 export const DEFAULT_HOST = 'http://apiv2.bitclubnetwork.com'
 export const DEFAULT_PORT = 80
-export const BASE_PATH = '/api/v1'
+export const BASE_PATH = ''
 export const DEFAULT_API_VERSION = null
+export const AUTH_REQUIRED_DEFAULT = false
 
 export const DEFAULT_TIMEOUT = 5000
 
@@ -32,9 +33,13 @@ class MCApiClient {
       version: DEFAULT_API_VERSION,
       key: null,
       timeout: DEFAULT_TIMEOUT,
+      authRequiredByDefault: AUTH_REQUIRED_DEFAULT,
       agent: null,
       dev: false,
+
     }
+
+    this.basicMethods = null
 
     // this.setApiKey(key)
     // this.setApiVersion(version)
@@ -56,6 +61,10 @@ class MCApiClient {
     }
   }
 
+  setBasePath(path) {
+    this._setApiField('basePath', path)
+  }
+
   setFullUrl(url) {
     this._setApiField('fullUrl', url)
   }
@@ -66,6 +75,10 @@ class MCApiClient {
 
   setApiKey(key) {
     this._setApiField('key', key)
+  }
+
+  setBasicMethod(methods) {
+    this.basicMethods = methods
   }
 
   setAuthToken(token) {
@@ -105,7 +118,7 @@ class MCApiClient {
 
   _prepareResources() {
     for (const name in this._resources) {
-      this[name[0].toLowerCase() + name.substring(1)] = new resources[name](this)
+      this[name[0].toLowerCase() + name.substring(1)] = new this._resources[name](this)
     }
   }
 }

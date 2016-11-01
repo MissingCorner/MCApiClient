@@ -17,12 +17,14 @@ export default class Resource {
   constructor(client, urlData) {
     this._client = client
     this._urlData = urlData || {}
-    this.basePath = utils.makeURLInterpolator(client.getApiField('basePath'));
+    this.basePath = utils.makeURLInterpolator(client.getApiField('basePath'))
     this.path = utils.makeURLInterpolator('')
 
     this.overridePort = null
     this.overrideHost = null
     this.overrideFullUrl = null
+
+    this.authRequired = client.authRequiredByDefault
 
     this.requestDataProcessor = null
   }
@@ -74,17 +76,17 @@ export default class Resource {
       this.basePath(urlData),
       resourcePath(urlData),
       typeof commandPath === 'function' ? commandPath(urlData) : commandPath
-    ).replace(/\\/g, '/'); // ugly workaround for Windows
+    ).replace(/\\/g, '/') // ugly workaround for Windows
 
     if (fullUrl) {
-      return `${fullUrl}${uri}`
+      return `${fullUrl}/${uri}`
     }
-    return `${host}:${port}${uri}`
+    return `${host}:${port}/${uri}`
   }
 
   includeBasicMethod(methods) {
     methods.forEach((methodName) => {
-      this[methodName] = basicMethods[methodName];
+      this[methodName] = this._client.basicMethods[methodName]
     }, this)
   }
 

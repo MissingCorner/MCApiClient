@@ -1,4 +1,4 @@
-import { Resource, method } from '../../index'
+import { Resource, method } from '../../../src/MCApiClient'
 
 class GithubUser extends Resource {
   constructor(client, urlData) {

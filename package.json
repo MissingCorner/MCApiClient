@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node example.js",
+    "start": "babel-node ./examples/Typicode/index.js",
     "build": "babel lib --presets babel-preset-es2015,babel-preset-stage-0 --out-dir dist",
     "release": "npm run build && npm publish"
   },
@@ -14,7 +14,7 @@
     "url": "git@bitbucket.org:crevid/crehub-node-sdk.git"
   },
   "keywords": [
-    "crevid"
+    "api", "client", "missingcorner"
   ],
   "author": "crevid",
   "license": "ISC",
@@ -39,6 +39,7 @@
     "eslint-config-standard": "^5.3.5",
     "eslint-plugin-babel": "^3.3.0",
     "eslint-plugin-promise": "^2.0.1",
-    "eslint-plugin-standard": "^2.0.0"
+    "eslint-plugin-standard": "^2.0.0",
+    "qs": "^6.3.0"
   }
 }

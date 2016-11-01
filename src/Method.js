@@ -53,7 +53,7 @@ export function method(spec) {
     }
 
     // Default auth is required, unless otherwise
-    const auth = spec.hasOwnProperty('auth') ? spec.auth : true
+    const auth = spec.hasOwnProperty('auth') ? spec.auth : this.authRequired
 
     const options = spec.options || {}
     this._request(requestMethod, requestPath, data, auth, options)
@@ -63,3 +63,4 @@ export function method(spec) {
     return deferred.promise
   }
 }
+export default method
